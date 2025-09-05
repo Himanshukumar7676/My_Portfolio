@@ -1,0 +1,127 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #000000;
+    color: #e0e0e0;
+    cursor: none;
+    font-size: 16px; /* Base font size */
+}
+.accent-color { color: #64ffda; }
+.bg-accent { background-color: #64ffda; }
+.border-accent { border-color: #64ffda; }
+.glass-effect {
+    background: rgba(10, 10, 10, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(100, 255, 218, 0.1);
+    transition: all 0.3s ease;
+}
+.glass-effect:hover {
+    border-color: rgba(100, 255, 218, 0.7);
+    box-shadow: 0 0 20px rgba(100, 255, 218, 0.2);
+}
+.section-heading::before {
+    content: '0' counter(section) '.';
+    counter-increment: section;
+    margin-right: 0.5rem;
+    color: #64ffda;
+    font-family: monospace;
+}
+body { counter-reset: section; }
+#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+
+.cursor-dot {
+    width: 8px; height: 8px; background-color: #64ffda; border-radius: 50%;
+    position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+    pointer-events: none; z-index: 9999; transition: width 0.3s, height 0.3s;
+}
+.cursor-outline {
+    width: 40px; height: 40px; border: 2px solid #64ffda; border-radius: 50%;
+    position: fixed; top: 0; left: 0; transform: translate(-50%, -50%);
+    pointer-events: none; z-index: 9999; transition: transform 0.1s ease-out, opacity 0.3s;
+}
+.cursor-dot.hovered { width: 30px; height: 30px; opacity: 0.5; }
+.cursor-outline.hovered { transform: translate(-50%, -50%) scale(1.5); opacity: 0; }
+
+/* --- UPDATED SMOKY CURSOR COLOR AND OPACITY --- */
+.smoke-particle {
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9998;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0) 70%); /* White color, increased opacity */
+    animation: smoke-animation 1.2s forwards;
+}
+@keyframes smoke-animation {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.8;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(3.5);
+        opacity: 0;
+    }
+}
+
+
+@keyframes pulse { 0% { transform: scale(0.95); } 50% { transform: scale(1.05); } 100% { transform: scale(0.95); } }
+@keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes rotate-reverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+
+.ai-core { animation: pulse 4s infinite ease-in-out; }
+.orbit-1 { animation: rotate 20s linear infinite; transform-origin: center; }
+.orbit-2 { animation: rotate-reverse 30s linear infinite; transform-origin: center; }
+.orbit-3 { animation: rotate 40s linear infinite; transform-origin: center; }
+
+.text-glow { text-shadow: 0 0 8px rgba(100, 255, 218, 0.5); }
+.button-glow:hover { box-shadow: 0 0 20px rgba(100, 255, 218, 0.5); }
+.project-card { transition: transform 0.3s ease; cursor: pointer; }
+.project-card:hover { transform: translateY(-10px); }
+
+.reveal { opacity: 0; transform: translateY(50px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+.reveal.active { opacity: 1; transform: translateY(0); }
+
+.modal {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.8);
+    display: flex; align-items: center; justify-content: center; z-index: 1000;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+}
+.modal.active { opacity: 1; pointer-events: all; }
+.modal-content {
+    background: #0a0a0a; padding: 2rem; border-radius: 0.5rem; width: 90%; max-width: 700px;
+    border: 1px solid rgba(100, 255, 218, 0.2); transform: scale(0.95); transition: transform 0.3s ease;
+}
+.modal.active .modal-content { transform: scale(1); }
+
+.skill-bar-container {
+    height: 8px;
+    width: 100%;
+    background-color: rgba(100, 255, 218, 0.1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+.skill-bar {
+    height: 100%;
+    width: 0;
+    background-color: #64ffda;
+    border-radius: 4px;
+    transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.reveal.active .skill-bar {
+    width: var(--width);
+}
+
+.form-input {
+    width: 100%;
+    background: rgba(10, 10, 10, 0.75);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    color: #e0e0e0;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+.form-input:focus {
+    outline: none;
+    border-color: #64ffda;
+    box-shadow: 0 0 10px rgba(100, 255, 218, 0.3);
+}
